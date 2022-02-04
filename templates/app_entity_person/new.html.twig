@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AppEntityPerson{% endblock %}
+
+{% block body %}
+    <h1>Create new AppEntityPerson</h1>
+
+    {{ include('app_entity_person/_form.html.twig') }}
+
+    <a href="{{ path('app_entity_person_index') }}">back to list</a>
+{% endblock %}
