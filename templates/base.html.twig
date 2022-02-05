@@ -12,15 +12,27 @@
             <link rel='stylesheet' href="{{ asset('css/bootstrap-theme.min.css')}}"/>
             <link rel='stylesheet' href="{{ asset('css/bootstrap.min.css.map')}}"/>
             <link rel='stylesheet' href="{{ asset('css/bootstrap-theme.min.css.map')}}"/>
+            {# Fontawesome styles#}
+            <link rel='stylesheet' href="{{ asset('css/fontawesome.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/all.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/brands.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/regular.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/solid.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/svg-with-js.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/v4-font-face.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/v4-shims.min.css')}}"/>
+            <link rel='stylesheet' href="{{ asset('css/v5-font-face.min.css')}}"/>
+            {# End#}
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script type='text/javascript' src='{{ asset('js/jquery.min.js')}}'></script>
             <script type='text/javascript' src='{{ asset('js/datatables.min.js')}}'></script>
             <script type='text/javascript' src='{{ asset('js/bootstrap.min.js')}}'></script>
         {% endblock %}
     </head>
-    <body>
+    <body class="col-md-12">
         {% block body %}{% endblock %}
     </body>
 </html>
