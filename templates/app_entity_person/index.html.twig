@@ -7,7 +7,7 @@
         <div class="col-md-12" style="margin-top: 20px;">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Personas
+                    Lista de Personas
                     <div class="options  pull-right">
                         <a href="{{ path('app_entity_person_new') }}" class="tooltips"
                            data-toggle="tooltip" data-placement="left" title="Crear Persona">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered responsive table-hover" id="table"
+                        <table class="table dataTable table-striped table-bordered responsive table-hover" id="table"
                                cellspacing="0"
                                width="100%">
                             <thead>
@@ -49,7 +49,7 @@
                                         <a href="{{ path('app_entity_person_edit', {'id': app_entity_person.id}) }}">
                                             <i class="fa fa-lg fa-edit"></i>
                                         </a>
-                                        <a onclick="deletePerson({{ app_entity_person.id}}, '{{ csrf_token('delete' ~ app_entity_person.id) }}')" style="cursor: pointer;">
+                                        <a onclick="deletePerson({{ app_entity_person.id}}, `{{ csrf_token('delete' ~ app_entity_person.id) }}`)" style="cursor: pointer;">
                                             <i class="fas fa-lg fa-trash" style="color: red"></i>
 
                                         </a>
@@ -86,9 +86,9 @@
             modal_delete += '               </h4>'
             modal_delete += '           </div>'
             modal_delete += '           <div class="modal-body">'
-            modal_delete += '               <form method="post" action="/app/entity/person/"'
+            modal_delete += '               <form method="post" action="/app/entity/person/'
             modal_delete += id
-            modal_delete += '>'
+            modal_delete += '">'
             modal_delete += '                   <input type="hidden" name="_token" value="'
             modal_delete += token
             modal_delete += '">'
@@ -97,18 +97,18 @@
             modal_delete += '                   <button type="button" class="btn btn-default" data-dismiss="modal">'
             modal_delete += '                       Cerrar'
             modal_delete += '                   </button>'
-            modal_delete += '                   <a type="button" class="btn btn-danger" href="/app/entity/person/"'
-            modal_delete += id
-            modal_delete += '>'
+            modal_delete += '                   <button type="submit" class="btn btn-danger">'
+            modal_delete += '                       <i class="fas fa-lg fa-trash"></i>'
             modal_delete += '                       Eliminar'
-            modal_delete += '                   </a>'
+            modal_delete += '                   </button>'
             modal_delete += '               </div>'
+            modal_delete += '             </form>'
             modal_delete += '           </div>'
             modal_delete += '       </div>'
             modal_delete += '   </div>'
             modal_delete += '</div>'
-            // $('#div_person_delete').html(modal_delete)
-            // $('#person_delete').modal('show');
+            $('#div_person_delete').html(modal_delete)
+            $('#person_delete').modal('show');
 
         }
     </script>

@@ -1,4 +1,61 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
+<div class="panel-body">
+    <div class="form-group col-md-12">
+        <div class="col-md-1">
+            <label>Nombre</label>
+        </div>
+        <div class="col-md-5">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-1">
+            <label>Apellidos</label>
+        </div>
+        <div class="col-md-5">
+            {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-1">
+            <label>CI</label>
+        </div>
+        <div class="col-md-5">
+            {{ form_widget(form.ci, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-1">
+            <label>Direccion</label>
+        </div>
+        <div class="col-md-5">
+            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="panel-footer">
+    <div class="row">
+        <div class="col-sm-6 pull-left">
+            <div class="btn-toolbar">
+                <a class="btn-default btn" href="{{ path('app_entity_person_index') }}">
+                    <i class="fa fa-lg fa-arrow-left"></i>
+                    Lista de Personas
+                </a>
+                <button type="submit" class="btn-primary btn">
+                    {% set icon = 'edit' %}
+                    {% if type == 'new' %}
+                        {% set icon = 'plus' %}
+                    {% endif %}
+                    <i class="fa fa-lg fa-{{ icon }}"></i>
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{{ form_widget(form) }}
 {{ form_end(form) }}
