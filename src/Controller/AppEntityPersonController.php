@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/app/entity/person")
@@ -29,12 +30,12 @@ class AppEntityPersonController extends AbstractController
     /**
      * @Route("/new", name="app_entity_person_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator): Response
     {
         $appEntityPerson = new AppEntityPerson();
         $form = $this->createForm(AppEntityPersonType::class, $appEntityPerson);
         $form->handleRequest($request);
-
+        $errors = $validator->validate($appEntityPerson);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($appEntityPerson);
             $entityManager->flush();
@@ -45,6 +46,7 @@ class AppEntityPersonController extends AbstractController
         return $this->renderForm('app_entity_person/new.html.twig', [
             'app_entity_person' => $appEntityPerson,
             'form' => $form,
+            'errors' => $errors,
         ]);
     }
 
