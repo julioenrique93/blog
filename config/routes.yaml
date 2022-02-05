@@ -1,6 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\AppEntityPersonController::index
+index:
+    path: /
+    controller: App\Controller\AppEntityPersonController::index
 #person_index:
 #    path: /app/entity/person
 #    controller: App\Controller\AppEntityPersonController::index
