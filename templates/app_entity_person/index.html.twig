@@ -9,7 +9,7 @@
                 <div class="panel-heading">
                     Lista de Personas
                     <div class="options  pull-right">
-                        <a href="{{ path('app_entity_person_new') }}" class="tooltips"
+                        <a href="{{ path('person_new') }}" class="tooltips"
                            data-toggle="tooltip" data-placement="left" title="Crear Persona">
                             <i class="fas fa-lg fa-plus btn-warning"></i>
                         </a>
@@ -46,7 +46,7 @@
                                     <td>{{ app_entity_person.ci }}</td>
                                     <td>{{ app_entity_person.address }}</td>
                                     <td>
-                                        <a href="{{ path('app_entity_person_edit', {'id': app_entity_person.id}) }}">
+                                        <a href="{{ path('person_edit', {'id': app_entity_person.id}) }}">
                                             <i class="fa fa-lg fa-edit"></i>
                                         </a>
                                         <a onclick="deletePerson({{ app_entity_person.id}}, `{{ csrf_token('delete' ~ app_entity_person.id) }}`)" style="cursor: pointer;">

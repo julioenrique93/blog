@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class AppEntityPersonController extends AbstractController
 {
     /**
-     * @Route("/", name="app_entity_person_index", methods={"GET"})
+     * @Route("/app/entity/person", name="person_index")
      */
     public function index(AppEntityPersonRepository $appEntityPersonRepository): Response
     {
@@ -30,6 +30,9 @@ class AppEntityPersonController extends AbstractController
     /**
      * @Route("/new", name="app_entity_person_new", methods={"GET", "POST"})
      */
+//    /**
+//     * @Route("/app/entity/person/new", name="person_mew")
+//     */
     public function new(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator): Response
     {
         $appEntityPerson = new AppEntityPerson();
@@ -40,7 +43,7 @@ class AppEntityPersonController extends AbstractController
             $entityManager->persist($appEntityPerson);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_entity_person_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('person_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('app_entity_person/new.html.twig', [
@@ -61,27 +64,27 @@ class AppEntityPersonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_entity_person_edit", methods={"GET", "POST"})
+     * @Route("/app/entity/person/{id}/edit", name="person_edit")
      */
-    public function edit(Request $request, AppEntityPerson $appEntityPerson, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, AppEntityPerson $appEntityPerson, EntityManagerInterface $entityManager, ValidatorInterface $validator): Response
     {
         $form = $this->createForm(AppEntityPersonType::class, $appEntityPerson);
         $form->handleRequest($request);
-
+        $errors = $validator->validate($appEntityPerson);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_entity_person_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('person_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('app_entity_person/edit.html.twig', [
             'app_entity_person' => $appEntityPerson,
             'form' => $form,
+            'errors' => $errors,
         ]);
     }
-
     /**
-     * @Route("/{id}", name="app_entity_person_delete", methods={"POST"})
+     * @Route("/app/entity/person/{id}", name="person_delete")
      */
     public function delete(Request $request, AppEntityPerson $appEntityPerson, EntityManagerInterface $entityManager): Response
     {
@@ -90,6 +93,6 @@ class AppEntityPersonController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_entity_person_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('person_index', [], Response::HTTP_SEE_OTHER);
     }
 }
