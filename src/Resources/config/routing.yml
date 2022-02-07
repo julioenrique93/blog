@@ -1,0 +1,3 @@
+persons:
+  resource: "./routing/persons.yml"
+  prefix: /persons

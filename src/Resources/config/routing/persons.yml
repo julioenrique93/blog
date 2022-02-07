@@ -1,0 +1,15 @@
+person_index:
+  path: /
+  controller: App\Controller\AppEntityPersonController::index
+person_new:
+  path: /new
+  controller: App\Controller\AppEntityPersonController::new
+  methods: GET|POST
+person_edit:
+  path: /{id}/edit
+  controller: App\Controller\AppEntityPersonController::edit
+  methods: PUT|GET|POST
+person_delete:
+  path: /{id}
+  controller: App\Controller\AppEntityPersonController::delete
+  methods: DELETE|POST
