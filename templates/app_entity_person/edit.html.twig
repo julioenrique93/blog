@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Modificar Persona
+{% endblock %}
+
+{% block body %}
+    <h3>
+        Modificar Persona
+    </h3>
+    {% set type = 'edit' %}
+    {{ include('app_entity_person/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}
