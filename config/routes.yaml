@@ -15,4 +15,4 @@ person_edit:
 person_delete:
     path: /app/entity/person/{id}
     controller: App\Controller\AppEntityPersonController::delete
-    methods: POST
+    methods: DELETE|POST

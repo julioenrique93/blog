@@ -86,13 +86,14 @@
             modal_delete += '               </h4>'
             modal_delete += '           </div>'
             modal_delete += '           <div class="modal-body">'
-            modal_delete += '               <form method="post" action="/app/entity/person/'
+            modal_delete += '               <form method="post" data-method="delete" _method=DELETE" action="/app/entity/person/'
             modal_delete += id
-            modal_delete += '">'
+            modal_delete += '?_method=DELETE">'
             modal_delete += '                   <input type="hidden" name="_token" value="'
             modal_delete += token
             modal_delete += '">'
             modal_delete += '                   Esta seguro que desea eliminar este elemento?'
+            modal_delete += '                   <input type="hidden" name="_method" value="DELETE">'
             modal_delete += '               <div class="modal-footer">'
             modal_delete += '                   <button type="button" class="btn btn-default" data-dismiss="modal">'
             modal_delete += '                       Cerrar'
